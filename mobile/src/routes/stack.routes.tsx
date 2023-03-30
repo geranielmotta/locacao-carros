@@ -9,8 +9,8 @@ import { Confirmation } from '../screens/Confirmation';
 import { MyCars } from '../screens/MyCars';
 import { Splash } from '../screens/Splash';
 import { SignIn } from '../screens/SignIn';
-import { FirstStep } from '../screens/SignUp/FirstStep';
-import { SecondStep } from '../screens/SignUp/SecondStep';
+import { FirstStep } from '../screens/SignUp/SignUpFirstStep';
+import { SecondStep } from '../screens/SignUp/SignUpSecondStep';
 import { RootStackParamList } from '../types/react-navigation/stack.routes';
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
