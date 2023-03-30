@@ -1,13 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { SplashRoutes } from './splash.routes';
+import { NavigationContainer } from '@react-navigation/native';
 
+import { StackRoutes } from './stack.routes';
 
 export function Routes() {
-
   return (
     <NavigationContainer>
-      <SplashRoutes />
+      <StackRoutes />
     </NavigationContainer>
   );
 }

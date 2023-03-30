@@ -1,35 +1,41 @@
 import React from 'react';
-import { useWindowDimensions, StatusBar } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { StatusBar, useWindowDimensions } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+
+import { ConfirmButton } from '../../components/ConfirmButton';
 
 import LogoSvg from '../../assets/logo_background_gray.svg';
 import DoneSvg from '../../assets/done.svg';
-
-import { ConfirmButton } from '../../components/ConfirmButton';
 
 import {
   Container,
   Content,
   Title,
   Message,
-  Footer,
+  Footer
 } from './styles';
+import { RootStackParamList } from '../../types/react-navigation/stack.routes';
 
-interface Params {
+export interface ConfirmationParams {
   title: string;
   message: string;
-  nextScreenRoute: string;
+  screenToNavigate: 'Splash' | 'SignIn' | 'SignUpFirstStep' | 'SignUpSecondStep' | 'Home' | 'CarDetails' | 'Scheduling' | 'SchedulingDetails' | 'Confirmation' | 'MyCars';
 }
 
-export function Confirmation(){
+type Props = StackScreenProps<RootStackParamList, 'Confirmation'>;
+
+export function Confirmation({ navigation, route }: Props) {
   const { width } = useWindowDimensions();
 
-  const navigation = useNavigation();
-  const route = useRoute();
-  const { title, message, nextScreenRoute } = route.params as Params;
+  const { message, screenToNavigate, title } = route.params;
 
-  function handleConfirm() {
-    navigation.navigate(nextScreenRoute);
+  function handleGoToScreen() {
+    navigation.reset({
+      index: 0,
+      routes: [
+        { name: screenToNavigate }
+      ] 
+    })
   }
 
   return (
@@ -39,20 +45,17 @@ export function Confirmation(){
         translucent
         backgroundColor="transparent"
       />
-      
       <LogoSvg width={width} />
 
       <Content>
-        <DoneSvg width={80} height={80}/>
+        <DoneSvg width={80} height={80} />
         <Title>{title}</Title>
 
-        <Message>
-          {message}
-        </Message>
+        <Message>{message}</Message>
       </Content>
 
       <Footer>
-        <ConfirmButton title="OK" onPress={handleConfirm} />
+        <ConfirmButton title="OK" onPress={handleGoToScreen} />
       </Footer>
     </Container>
   );
