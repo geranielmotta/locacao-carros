@@ -36,9 +36,11 @@ export function Home() {
   }
 
   async function offlineSynchronize() {
+   
     await synchronize({
       database,
       pullChanges: async ({ lastPulledAt }) => {
+
         const response = await api
           .get(`cars/sync/pull?lastPulledVersion=${lastPulledAt || 0}`);
 

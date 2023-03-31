@@ -21,9 +21,6 @@ import {
   PhotoButton, PhotoContainer, Section
 } from './styles';
 
-
-
-
 export function Profile() {
   const { user, signOut, updatedUser } = useAuth();
 

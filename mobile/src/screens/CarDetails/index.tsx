@@ -20,12 +20,6 @@ import {
   Accessories, Brand, CarImages, Container, Description, Details, Footer, Header, Name, OfflineInfo, Period,
   Price, Rent
 } from './styles';
-
-
-
-
-
-
 interface Params {
   carId: string;
 }
